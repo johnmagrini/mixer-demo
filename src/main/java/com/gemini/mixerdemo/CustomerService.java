@@ -31,11 +31,6 @@ public class CustomerService {
         //move inbound transaction into waiting queue
         //credit customer
         customer.setReceivedAmount(customer.getReceivedAmount().add(transaction.getAmount()));
-        customer.getPendingTransactions().add(
-                PendingTransaction.builder()
-                        .sentAmount(BigDecimal.ZERO)
-                        .transaction(transaction)
-                        .build());
         mixingService.addPending(customer);
     }
 }

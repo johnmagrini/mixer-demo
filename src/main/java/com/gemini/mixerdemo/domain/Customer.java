@@ -14,9 +14,11 @@ public class Customer {
     private String inboundAddress;  //key
     private List<String> outboundAddresses;
     private BigDecimal receivedAmount;
-    private List<PendingTransaction> pendingTransactions;
-    private List<Transaction> completedTransactions;
     private BigDecimal sentAmountGross;
     private BigDecimal sentAmountNet;
     private BigDecimal commissionRate;
+
+    public BigDecimal getPendingAmount() {
+        return receivedAmount.subtract(sentAmountGross);
+    }
 }
